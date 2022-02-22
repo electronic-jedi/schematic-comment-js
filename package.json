@@ -5,9 +5,11 @@
   "engines": {
     "node": "17.5"
   },
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node ."
+    "start": "node .",
+    "build": "tsc",
+    "example": "ts-node src/example/comment.ts"
   },
   "repository": {
     "type": "git",
