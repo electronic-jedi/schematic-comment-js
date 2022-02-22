@@ -4,7 +4,7 @@
 // https://opensource.org/licenses/MIT
 
 import { Configuration } from "./cfg";
-import { GeometryTag, Box, IGeometry } from "./interface/geometry";
+import { Text, Box, IGeometry } from "./interface/geometry";
 import { IGeomIsolatedData, IGeomLine, TBit, TGeomTag } from "./interface/misc";
 import { ISPrinter } from "./interface/s-printer";
 
@@ -54,6 +54,10 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
             progress += composeBox(geom, progress)
             geomIsolatedLineData.push({ group: 'box', lines: progress.split(BREAK) })
         }
+        if (geom instanceof Text) {
+            progress += composeText(geom, progress)
+            geomIsolatedLineData.push({ group: 'text', lines: progress.split(BREAK) })
+        }
     }
 
 
@@ -90,7 +94,7 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
         }
         return outputLines.map(l => l.join('')).join('\n');
     }
-    function composeBox(box: Box, progress: string) {
+    function composeBox(box: Box, progress: string): string {
         let { width, height } = box
         let { x, y } = box.position
         progress += composeCharsInLine(SPACE, x)
@@ -111,13 +115,23 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
         progress += composeCharsInLine(BREAK, 1)
         return progress
     }
+    function composeText(text: Text, progress: string): string {
+        let { x, y } = text.position
+        let chars = text.text
+        progress += composeCharsInLine(SPACE, x)
+        progress += chars
+        progress += composeCharsInLine(BREAK, 1)
+        return progress
+    }
 }
 
 function canOverwriteChar(type: TGeomTag, newChar: string, existingChar: string, cfg: Configuration) {
     if (existingChar == newChar) return false
     switch (type) {
+        case 'text':
+            return newChar!=' '
         case 'box':
-            return newChar != ' '
+            return existingChar==' '
     }
     return false
 }

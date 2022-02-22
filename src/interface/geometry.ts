@@ -19,18 +19,18 @@ export interface ISpace extends IPosition {
 }
 
 export class Box implements IGeometry {
-    width: number
-    height: number
-    position: IPosition
     constructor(
-        width: number,
-        height: number,
-        position: IPosition,
-        ) {
-        this.height = height
-        this.width = width; 
-        this.position = position
-    }
+        public readonly width: number,
+        public readonly height: number,
+        public readonly position: IPosition
+    ) { }
+}
+
+export class Text implements IGeometry {
+    constructor(
+        public readonly text: string,
+        public readonly position: IPosition,
+    ) { }
 }
 
 export interface IArrow extends IGeometry {
@@ -38,9 +38,6 @@ export interface IArrow extends IGeometry {
     orientation: TOrientation
 }
 
-export interface IText extends IGeometry {
-    value: string
-}
 
 export enum GeometryTag {
     Space,
