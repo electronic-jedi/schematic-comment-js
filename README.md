@@ -5,3 +5,6 @@
  https://opensource.org/licenses/MIT
 -->
 
+# schematic-comment-js
+
+A library for writing comments with diagram detail
