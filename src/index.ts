@@ -5,5 +5,4 @@
 
 export * from './printer'
 export * from './interface/geometry'
-export * from './cfg'
 export * from './interface/misc'

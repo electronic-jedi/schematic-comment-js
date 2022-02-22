@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export type TOrientation = 'v' | 'h'
+export type TDirection = 'l' | 'r' | 'u' | 'd'
 
 export interface IPosition {
     x: number
@@ -24,6 +24,23 @@ export class Box implements IGeometry {
         public readonly height: number,
         public readonly position: IPosition
     ) { }
+    static hBorderChar='-'
+    static vBorderChar='.'
+}
+
+export class Line implements IGeometry {
+    constructor(
+        public size: number,
+        public direction: TDirection,
+        public hasHead: boolean,
+        public position: IPosition
+    ) { }
+    static hLineChar = '*'
+    static vLineChar = '*'
+    static leftLineChar = '<'
+    static rightLineChar = '>'
+    static upLineChar = '^'
+    static downLineChar = 'v'
 }
 
 export class Text implements IGeometry {
@@ -33,15 +50,4 @@ export class Text implements IGeometry {
     ) { }
 }
 
-export interface IArrow extends IGeometry {
-    size: number
-    orientation: TOrientation
-}
 
-
-export enum GeometryTag {
-    Space,
-    Box,
-    Arrow,
-    Text
-}

@@ -3,10 +3,8 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { Configuration } from "./cfg";
-import { Text, Box, IGeometry } from "./interface/geometry";
-import { IGeomIsolatedData, IGeomLine, TBit, TGeomTag } from "./interface/misc";
-import { ISPrinter } from "./interface/s-printer";
+import { Text, Box, IGeometry, Line } from "./interface/geometry";
+import { IGeomIsolatedData, IGeomLine, TGeomTag } from "./interface/misc";
 
 
 
@@ -39,11 +37,9 @@ function composeCharsInLine(character: string, times: number = 1) {
  * @param arg 
  * @param geometry 
  */
-export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
+export function generateComment(geometry: IGeometry[]) {
     const SPACE = ' '
     const BREAK = '\n'
-    const { config } = arg
-    const { hBorderChar, vBorderChar, hLineChar, vLineChar } = config
     const geomIsolatedLineData: IGeomIsolatedData[] = []
 
     for (let geom of geometry) {
@@ -54,9 +50,13 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
             progress += composeBox(geom, progress)
             geomIsolatedLineData.push({ group: 'box', lines: progress.split(BREAK) })
         }
-        if (geom instanceof Text) {
+        else if (geom instanceof Text) {
             progress += composeText(geom, progress)
             geomIsolatedLineData.push({ group: 'text', lines: progress.split(BREAK) })
+        }
+        else if (geom instanceof Line) {
+            progress += composeLine(geom, progress)
+            geomIsolatedLineData.push({ group: 'line', lines: progress.split(BREAK) })
         }
     }
 
@@ -84,7 +84,7 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
                     let newCharacter = data[column]
                     let currentOutputChar = outputLines[line][column]
                     if (currentOutputChar) {
-                        if (canOverwriteChar(group, newCharacter, currentOutputChar, config))
+                        if (canOverwriteChar(group, newCharacter, currentOutputChar))
                             outputLines[line][column] = newCharacter
                     } else {
                         outputLines[line][column] = newCharacter
@@ -99,19 +99,18 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
         let { x, y } = box.position
         progress += composeCharsInLine(SPACE, x)
         // Horizontal top side
-        progress += composeCharsInLine(hBorderChar, width)
+        progress += composeCharsInLine(Box.hBorderChar, width)
         progress += composeCharsInLine(BREAK, 1)
         for (let _y = y; _y <= y + height; _y++) {
-
             progress += composeCharsInLine(SPACE, x)
-            progress += composeCharsInLine(vBorderChar, 1)
+            progress += composeCharsInLine(Box.vBorderChar, 1)
             progress += composeCharsInLine(SPACE, width - 2)
-            progress += composeCharsInLine(vBorderChar, 1)
+            progress += composeCharsInLine(Box.vBorderChar, 1)
             progress += composeCharsInLine(BREAK, 1)
         }
         progress += composeCharsInLine(SPACE, x)
         // Horizontal bottom side
-        progress += composeCharsInLine(hBorderChar, width)
+        progress += composeCharsInLine(Box.hBorderChar, width)
         progress += composeCharsInLine(BREAK, 1)
         return progress
     }
@@ -123,15 +122,48 @@ export function generateComment(arg: ISPrinter, geometry: IGeometry[]) {
         progress += composeCharsInLine(BREAK, 1)
         return progress
     }
+    function composeLine(line: Line, progress: string): string {
+        let { x, y } = line.position
+        let { size, direction, hasHead } = line
+        if (['l', 'r'].includes(direction)) {
+            progress += composeCharsInLine(SPACE, x)
+            if (direction == 'l' && hasHead)
+                progress += Line.leftLineChar
+            progress += composeCharsInLine(Line.hLineChar, size - 1)
+            if (direction == 'r' && hasHead)
+                progress += Line.rightLineChar
+            progress += composeCharsInLine(BREAK, 1)
+        }
+        else if (['u', 'd'].includes(direction)) {
+            if (direction == 'u' && hasHead) {
+                progress += composeCharsInLine(SPACE, x)
+                progress += Line.upLineChar
+                progress += composeCharsInLine(BREAK, 1)
+            }
+            for (let _y = y; _y <= y + size - 2; _y++) {
+                progress += composeCharsInLine(SPACE, x)
+                progress += composeCharsInLine(Line.vLineChar, 1)
+                progress += composeCharsInLine(BREAK, 1)
+            }
+            if (direction == 'd' && hasHead) {
+                progress += composeCharsInLine(SPACE, x)
+                progress += Line.downLineChar
+            }
+            progress += composeCharsInLine(BREAK, 1)
+        }
+        return progress
+    }
 }
 
-function canOverwriteChar(type: TGeomTag, newChar: string, existingChar: string, cfg: Configuration) {
+function canOverwriteChar(type: TGeomTag, newChar: string, existingChar: string) {
     if (existingChar == newChar) return false
     switch (type) {
         case 'text':
-            return newChar!=' '
+            return newChar != ' '
         case 'box':
-            return existingChar==' '
+            return newChar != ' '
+        case 'line':
+            return newChar != ' '
     }
     return false
 }
