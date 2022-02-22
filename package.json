@@ -1,0 +1,29 @@
+{
+  "name": "schematic-comment",
+  "version": "0.1.0",
+  "description": "A library for writing comments with diagram detail",
+  "engines": {
+    "node": "17.5"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electronic-jedi/schematic-comment-js.git"
+  },
+  "keywords": [
+    "comment"
+  ],
+  "author": "Dalitso Sakala <dalitso.1sc@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/electronic-jedi/schematic-comment-js/issues"
+  },
+  "homepage": "https://github.com/electronic-jedi/schematic-comment-js#readme",
+  "devDependencies": {
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  }
+}
