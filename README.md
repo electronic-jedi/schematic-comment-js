@@ -21,7 +21,7 @@ it without much calculation.
 * To help document code using diagrams within the source file. 
 
 ## Example
-Here is an example using `v1.0.1-beta`.
+Here is an example using `v1.0.1`.
 ```ts 
 // An example in typescript
 import { Box, Text, SchematicCommentBuilder, Line } from '../index'
