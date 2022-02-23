@@ -9,9 +9,13 @@
 
 A library for writing comments with diagram detail
 
+## Capabilities
+
+* Generate simple drawings using alphanumeric characters.
+* Support for comments used in programming languages for pasting into source files.
 
 ## Example
-Here is an example using `v1.0.0-beta`.
+Here is an example using `v1.0.1-beta`.
 ```ts 
 // An example in typescript
 import { Box, Text, SchematicCommentBuilder, Line } from '../index'
