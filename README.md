@@ -7,12 +7,18 @@
 
 # schematic-comment-js
 
-A library for writing comments with diagram detail
+A library for writing comments with diagram detail within source code.
 
 ## Capabilities
 
 * Generate simple drawings using alphanumeric characters.
 * Support for comments used in programming languages for pasting into source files.
+
+## Objectives
+
+* To simplify the usability of the library so that developers can use
+it without much calculation.
+* To help document code using diagrams within the source file. 
 
 ## Example
 Here is an example using `v1.0.1-beta`.
@@ -68,4 +74,4 @@ Output:
 ```
 
 # Contribute
-You can make a pull request to contribute.
+You can make a pull request on our [repository](https://github.com/electronic-jedi/schematic-comment-js) contribute.
