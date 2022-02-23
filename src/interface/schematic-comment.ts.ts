@@ -64,7 +64,7 @@ export class SchematicCommentBuilder {
      */
     static C_SINGLE_LINE = 0
     /**
-     * Comment delimited by the characters characters `/** *`
+     * Comment delimited by the characters characters `/** * /`
      */
     static C_MULTI_LINE = 1
     /**
@@ -79,7 +79,7 @@ export class SchematicCommentBuilder {
      * Comment delimited by the characters characters `///`
      */
     static DART = 4
-
+    /** see `setIncludeCommentEscapes` */
     private static _includeCommentEscapes = true
 
     /**
