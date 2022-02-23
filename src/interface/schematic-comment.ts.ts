@@ -43,6 +43,10 @@ export class SchematicCommentBuilder {
                     newLine = '//'
                     start = '//'
                     break
+                case SchematicCommentBuilder.DART:
+                    newLine = '///'
+                    start = '///'
+                    break
                 case SchematicCommentBuilder.HTML:
                     start = '<!--\n'
                     end = '-->'
