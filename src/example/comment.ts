@@ -9,6 +9,8 @@ import { Box, Text, SchematicCommentBuilder, Line } from '../index'
 // to preferred language.
 // SchematicCommentBuilder.setIncludeCommentEscapes(false)
 // Build the schematic.
+// Box.hBorderChar='-'
+Box.vBorderChar='-'
 let characters = new SchematicCommentBuilder()
     // box to contain text 'Schematic comment'
     .draw(new Box(20, 10, { x: 3, y: 0 }))

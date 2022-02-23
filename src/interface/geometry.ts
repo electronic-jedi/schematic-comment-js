@@ -18,16 +18,19 @@ export interface ISpace extends IPosition {
     width: number
 }
 
+/**Construct a box*/
 export class Box implements IGeometry {
     constructor(
         public readonly width: number,
         public readonly height: number,
         public readonly position: IPosition
     ) { }
-    static hBorderChar='*'
-    static vBorderChar='*'
+    /**The character to use when rendering a horizontal border */
+    static hBorderChar = '*'
+    /**The character to use when rendering a vertical border */
+    static vBorderChar = '*'
 }
-
+/**Construct a text characters */
 export class Line implements IGeometry {
     constructor(
         public size: number,
@@ -35,11 +38,17 @@ export class Line implements IGeometry {
         public hasHead: boolean,
         public position: IPosition
     ) { }
+    /**The character to use when rendering a horizontal line */
     static hLineChar = '-'
+    /**The character to use when rendering a vertical line */
     static vLineChar = '.'
+    /**The character to use when rendering an arowhead for an arrow going left*/
     static leftLineChar = '<'
+    /**The character to use when rendering an arowhead for an arrow going right*/
     static rightLineChar = '>'
+    /**The character to use when rendering an arowhead for an arrow going up*/
     static upLineChar = '^'
+    /**The character to use when rendering an arowhead for an arrow going down*/
     static downLineChar = 'v'
 }
 
