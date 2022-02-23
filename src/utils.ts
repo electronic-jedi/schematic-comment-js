@@ -32,7 +32,7 @@
 //                                                            ----------
 ////
 import { Text, Box, IGeometry, Line } from "./interface/geometry";
-import { IGeomIsolatedData, IGeomLine, TGeomTag } from "./interface/misc";
+import { IIsolatedLineCharacters, IFormatedLineCharacters, TCharacterType } from "./interface/misc";
 
 
 
@@ -68,7 +68,7 @@ function composeCharsInLine(character: string, times: number = 1) {
 export function generateComment(geometry: IGeometry[]) {
     const SPACE = ' '
     const BREAK = '\n'
-    const geomIsolatedLineData: IGeomIsolatedData[] = []
+    const geomIsolatedLineData: IIsolatedLineCharacters[] = []
 
     for (let geom of geometry) {
         let progress = ''
@@ -93,7 +93,7 @@ export function generateComment(geometry: IGeometry[]) {
     return runCompositing()
 
     function runCompositing() {
-        const groupLines: IGeomLine[][] = []
+        const groupLines: IFormatedLineCharacters[][] = []
         const outputLines: string[][] = []
         for (let completeFigure of geomIsolatedLineData) {
             let index = 0
@@ -183,7 +183,7 @@ export function generateComment(geometry: IGeometry[]) {
     }
 }
 
-function canOverwriteChar(type: TGeomTag, newChar: string, existingChar: string) {
+function canOverwriteChar(type: TCharacterType, newChar: string, existingChar: string) {
     if (existingChar == newChar) return false
     switch (type) {
         case 'text':
