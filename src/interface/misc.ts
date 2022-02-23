@@ -3,16 +3,16 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export type TBit=0|1
-export type TGeomTag='box'|'line'|'text'
-
-export interface IGeomLine{
-    group:TGeomTag
-    data:string
+export type TCharacterType = 'box' | 'line' | 'text'
+/**Characters in aline */
+export interface IFormatedLineCharacters {
+    group: TCharacterType
+    data: string
 }
-export interface IGeomIsolatedData{
-    group:TGeomTag
-    lines:string[]
+/** */
+export interface IIsolatedLineCharacters {
+    group: TCharacterType
+    lines: string[]
 }
 
 
