@@ -73,5 +73,8 @@ Output:
 */
 ```
 
+## Versioning
+The guidelines are as described by [semver](https://semver.org).
+
 # Contribute
 You can make a pull request on our [repository](https://github.com/electronic-jedi/schematic-comment-js) contribute.
