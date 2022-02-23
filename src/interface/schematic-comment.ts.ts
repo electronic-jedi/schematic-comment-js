@@ -27,11 +27,11 @@ export class SchematicCommentBuilder {
                 break
             case SchematicCommentBuilder.C_SINGLE_LINE:
                 newLine = '//'
-                start='//'
+                start = '//'
                 break
             case SchematicCommentBuilder.HTML:
-                start='<!--\n'
-                end='-->'
+                start = '<!--\n'
+                end = '-->'
                 break
             case SchematicCommentBuilder.BASH:
                 newLine = '#'
@@ -39,7 +39,7 @@ export class SchematicCommentBuilder {
         }
         let content = generateComment(this._data).replace(/\n/g, `\n${newLine}`)
         content = start + content + end
-        console.log(content)
+        return content
     }
     /**
      * Comment delimited by the characters characters `//`
