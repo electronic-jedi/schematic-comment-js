@@ -1,6 +1,6 @@
 {
   "name": "schematic-comment",
-  "version": "0.2.1",
+  "version": "1.0.0-beta",
   "description": "A library for writing comments with diagram detail",
   "engines": {
     "node": "17.5"

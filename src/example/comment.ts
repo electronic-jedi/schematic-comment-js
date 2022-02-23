@@ -7,7 +7,7 @@ import { Box, Text, SchematicCommentBuilder, Line } from '../index'
 
 // conditionally include escape characters according
 // to preferred language.
-SchematicCommentBuilder.setIncludeCommentEscapes(false)
+// SchematicCommentBuilder.setIncludeCommentEscapes(false)
 // Build the schematic.
 let characters = new SchematicCommentBuilder()
     // box to contain text 'Schematic comment'
@@ -24,7 +24,7 @@ let characters = new SchematicCommentBuilder()
     .draw(new Box(21, 3, { x: 51, y: 4 }))
     .draw(new Text('Is coming soon!', { x: 54, y: 5 }))
     // finally 'compile' the characters
-    .comment(SchematicCommentBuilder.DART)
+    .comment(SchematicCommentBuilder.C_MULTI_LINE)
 // `characters` now contains the string of characters formatted
 // with the desired figures
 console.log(characters)
