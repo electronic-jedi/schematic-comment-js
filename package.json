@@ -1,9 +1,9 @@
 {
-  "name": "@electronic-jedi/schematic-comment",
+  "name": "schematic-comment",
   "version": "1.0.1",
   "description": "A library for writing comments with diagram detail",
   "engines": {
-    "node": "17.5"
+    "node": "14"
   },
   "main": "dist/index.js",
   "scripts": {
