@@ -11,7 +11,7 @@ A library for writing comments with diagram detail
 
 
 ## Example
-Here is an example using `v0.2.0` *not ready for production yet)*.
+Here is an example using `v0.2.1` *not ready for production yet)*.
 ```ts 
 // An example in typescript
 import { Box, Text, SchematicCommentBuilder as SchematicCommentBuilder, Line } from '../index'
