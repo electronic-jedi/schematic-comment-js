@@ -3,6 +3,6 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export * from './printer'
+export * from './interface/schematic-comment.ts'
 export * from './interface/geometry'
 export * from './interface/misc'

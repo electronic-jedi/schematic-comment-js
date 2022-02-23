@@ -24,8 +24,8 @@ export class Box implements IGeometry {
         public readonly height: number,
         public readonly position: IPosition
     ) { }
-    static hBorderChar='-'
-    static vBorderChar='.'
+    static hBorderChar='*'
+    static vBorderChar='*'
 }
 
 export class Line implements IGeometry {
@@ -35,8 +35,8 @@ export class Line implements IGeometry {
         public hasHead: boolean,
         public position: IPosition
     ) { }
-    static hLineChar = '*'
-    static vLineChar = '*'
+    static hLineChar = '-'
+    static vLineChar = '.'
     static leftLineChar = '<'
     static rightLineChar = '>'
     static upLineChar = '^'
