@@ -16,7 +16,12 @@
     "url": "git+https://github.com/electronic-jedi/schematic-comment-js.git"
   },
   "keywords": [
-    "comment"
+    "comment",
+    "documentation",
+    "diagram",
+    "schematic",
+    "schematic-comment",
+    "docs"
   ],
   "author": "Dalitso Sakala <dalitso.1sc@gmail.com>",
   "license": "MIT",
