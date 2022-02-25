@@ -7,7 +7,7 @@
 
 # schematic-comment-js
 
-A library for writing comments with diagram detail within source code.
+Write comments with diagram detail for source code.
 
 ## Capabilities
 
@@ -21,10 +21,10 @@ it without much calculation.
 * To help document code using diagrams within the source file. 
 
 ## Example
-Here is an example using `v1.0.1`.
+Here is an example using `v1.0.2`.
 ```ts 
 // An example in typescript
-import { Box, Text, SchematicCommentBuilder, Line } from '../index'
+import { Box, Text, SchematicCommentBuilder, Line } from 'schematic-comment'
 
 // conditionally include escape characters according
 // to preferred language.

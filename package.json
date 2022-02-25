@@ -1,15 +1,13 @@
 {
   "name": "schematic-comment",
-  "version": "1.0.1+29",
-  "description": "A library for writing comments with diagram detail",
-  "engines": {
-    "node": "14"
-  },
+  "version": "1.0.2",
+  "description": "Write comments with diagram detail for source code",
   "main": "dist/index.js",
   "scripts": {
     "start": "node .",
     "build": "tsc",
-    "example": "ts-node src/example/comment.ts"
+    "example": "ts-node src/example/comment.ts",
+    "postinstall":"npm run build"
   },
   "repository": {
     "type": "git",
